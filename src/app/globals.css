@@ -120,3 +120,29 @@
     @apply bg-background text-foreground;
   }
 }
+
+@media print {
+  @page {
+    size: A4;
+    margin: 1.5cm;
+  }
+
+  body {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+    background: white !important;
+    color: black !important;
+  }
+
+  /* 테이블 행이 페이지 경계에서 잘리지 않도록 */
+  tr {
+    break-inside: avoid;
+  }
+
+  /* 헤더·총금액 영역 페이지 분리 방지 */
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+}

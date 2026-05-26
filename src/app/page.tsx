@@ -1,19 +1,6 @@
-import { Footer } from '@/components/layout/footer'
-import { Header } from '@/components/layout/header'
-import { CTASection } from '@/components/sections/cta'
-import { FeaturesSection } from '@/components/sections/features'
-import { HeroSection } from '@/components/sections/hero'
+import { redirect } from 'next/navigation'
 
+// 루트 경로 접근 시 로그인 페이지로 리디렉션
 export default function Home() {
-  return (
-    <div className="flex min-h-screen flex-col">
-      <Header />
-      <main className="flex-1">
-        <HeroSection />
-        <FeaturesSection />
-        <CTASection />
-      </main>
-      <Footer />
-    </div>
-  )
+  redirect('/login')
 }

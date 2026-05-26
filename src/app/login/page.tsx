@@ -3,8 +3,8 @@ import { Metadata } from 'next'
 import { LoginForm } from '@/components/login-form'
 
 export const metadata: Metadata = {
-  title: '로그인',
-  description: '계정에 로그인하여 서비스를 이용하세요',
+  title: '관리자 로그인 | invoice-web',
+  description: '관리자 로그인 페이지',
 }
 
 export default function LoginPage() {

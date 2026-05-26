@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# shrimp task manager
+.shrimp-data/
+
+# playwright test artifacts
+.playwright-mcp/
+
+# local claude settings
+.claude/settings.local.json
