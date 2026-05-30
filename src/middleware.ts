@@ -6,7 +6,9 @@ import type { SessionData } from '@/lib/auth'
 
 const sessionOptions = {
   cookieName: 'invoice-session',
-  password: process.env.SESSION_SECRET!,
+  password:
+    process.env.SESSION_SECRET ??
+    'fallback-placeholder-not-used-in-production-x',
   cookieOptions: {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
