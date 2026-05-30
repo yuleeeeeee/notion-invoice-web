@@ -32,17 +32,19 @@ const envSchema = z.object({
     )
     .optional(),
 
-  // 관리자 인증 (서버 사이드 전용)
+  // 관리자 인증 (서버 사이드 전용, 로그인 기능 사용 시에만 필요)
   ADMIN_EMAIL: z
     .string()
     .email('ADMIN_EMAIL은 유효한 이메일 형식이어야 합니다.')
-    .min(1, 'ADMIN_EMAIL이 설정되지 않았습니다. .env.local을 확인하세요.'),
+    .optional(),
   ADMIN_PASSWORD: z
     .string()
-    .min(8, 'ADMIN_PASSWORD는 최소 8자 이상이어야 합니다.'),
+    .min(8, 'ADMIN_PASSWORD는 최소 8자 이상이어야 합니다.')
+    .optional(),
   SESSION_SECRET: z
     .string()
-    .min(32, 'SESSION_SECRET은 최소 32자 이상이어야 합니다.'),
+    .min(32, 'SESSION_SECRET은 최소 32자 이상이어야 합니다.')
+    .optional(),
 })
 
 export const env = envSchema.parse({

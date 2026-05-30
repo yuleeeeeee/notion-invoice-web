@@ -27,7 +27,7 @@ declare module 'iron-session' {
 
 const sessionOptions = {
   cookieName: 'invoice-session',
-  password: env.SESSION_SECRET,
+  password: env.SESSION_SECRET ?? 'fallback-secret-for-build-only-not-used',
   cookieOptions: {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',

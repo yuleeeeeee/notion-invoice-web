@@ -19,6 +19,10 @@ export async function loginAction(
   const password = formData.get('password')?.toString() ?? ''
 
   // 자격증명 검증 (타이밍 공격 방지)
+  if (!env.ADMIN_EMAIL || !env.ADMIN_PASSWORD) {
+    return { error: '관리자 계정이 설정되지 않았습니다.' }
+  }
+
   const emailMatch = compareStrings(email, env.ADMIN_EMAIL)
   const passwordMatch = compareStrings(password, env.ADMIN_PASSWORD)
 
