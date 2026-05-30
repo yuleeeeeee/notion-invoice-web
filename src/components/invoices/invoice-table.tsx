@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { InboxIcon } from 'lucide-react'
 
 import { Badge } from '@/components/ui/badge'
 import {
@@ -32,23 +33,27 @@ interface InvoiceTableProps {
 export function InvoiceTable({ invoices }: InvoiceTableProps) {
   if (invoices.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center rounded-lg border py-16 text-center">
-        <p className="text-muted-foreground text-sm">인보이스가 없습니다.</p>
+      <div className="flex flex-col items-center justify-center rounded-xl border py-20 text-center">
+        <InboxIcon className="text-muted-foreground/40 mb-4 h-12 w-12" />
+        <p className="text-muted-foreground font-medium">인보이스가 없습니다</p>
+        <p className="text-muted-foreground mt-1 text-sm">
+          첫 번째 인보이스를 만들어보세요
+        </p>
         <Link
           href="/invoices/new"
-          className="text-primary mt-2 text-sm underline-offset-4 hover:underline"
+          className="text-primary mt-4 text-sm underline-offset-4 hover:underline"
         >
-          첫 인보이스 만들기
+          + 새 인보이스 만들기
         </Link>
       </div>
     )
   }
 
   return (
-    <div className="rounded-lg border">
+    <div className="rounded-xl border shadow-sm">
       <Table>
         <TableHeader>
-          <TableRow>
+          <TableRow className="bg-muted/30 hover:bg-muted/30">
             <TableHead>견적서 번호</TableHead>
             <TableHead>클라이언트</TableHead>
             <TableHead className="text-right">총금액</TableHead>
@@ -71,7 +76,7 @@ export function InvoiceTable({ invoices }: InvoiceTableProps) {
                 </Link>
               </TableCell>
               <TableCell>{invoice.clientName}</TableCell>
-              <TableCell className="text-right">
+              <TableCell className="text-right font-medium">
                 {formatAmount(invoice.totalAmount)}
               </TableCell>
               <TableCell>

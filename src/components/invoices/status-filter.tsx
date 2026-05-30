@@ -29,13 +29,18 @@ export function StatusFilter() {
   }
 
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="bg-muted/30 inline-flex rounded-lg border p-1">
       {STATUS_OPTIONS.map(opt => (
         <Button
           key={opt.value}
-          variant={current === opt.value ? 'default' : 'outline'}
+          variant="ghost"
           size="sm"
           onClick={() => handleSelect(opt.value)}
+          className={
+            current === opt.value
+              ? 'bg-background text-foreground hover:bg-background shadow-sm'
+              : 'text-muted-foreground hover:text-foreground'
+          }
         >
           {opt.label}
         </Button>

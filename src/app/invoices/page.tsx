@@ -1,10 +1,12 @@
 import { Suspense } from 'react'
 import { unstable_cache } from 'next/cache'
 import Link from 'next/link'
+import { PlusIcon } from 'lucide-react'
 
 import { InvoiceTable } from '@/components/invoices/invoice-table'
 import { InvoiceTableSkeleton } from '@/components/invoices/invoice-table-skeleton'
 import { StatusFilter } from '@/components/invoices/status-filter'
+import { Button } from '@/components/ui/button'
 import { queryInvoices } from '@/lib/notion'
 import type { InvoiceStatus } from '@/lib/notion-types'
 
@@ -50,18 +52,22 @@ export default async function InvoicesPage({ searchParams }: PageProps) {
     : 'created'
 
   return (
-    <div className="container mx-auto py-8">
-      <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-2xl font-bold">인보이스 목록</h1>
-        <Link
-          href="/invoices/new"
-          className="bg-primary text-primary-foreground rounded-md px-4 py-2 text-sm font-medium hover:opacity-90"
-        >
-          + 새 인보이스
-        </Link>
+    <div className="container mx-auto px-4 py-10">
+      <div className="mb-8 flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight">인보이스 목록</h1>
+          <p className="text-muted-foreground mt-1 text-sm">
+            견적서를 생성하고 클라이언트와 공유하세요
+          </p>
+        </div>
+        <Button asChild>
+          <Link href="/invoices/new">
+            <PlusIcon className="h-4 w-4" />새 인보이스
+          </Link>
+        </Button>
       </div>
 
-      <div className="mb-4">
+      <div className="mb-6">
         <StatusFilter />
       </div>
 

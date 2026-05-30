@@ -36,16 +36,9 @@ export async function middleware(request: NextRequest) {
     return response
   }
 
-  // 보호 라우트: 미인증 시 /login?next=pathname 리디렉션
-  if (!isLoggedIn) {
-    const loginUrl = new URL('/login', request.url)
-    loginUrl.searchParams.set('next', pathname)
-    return NextResponse.redirect(loginUrl)
-  }
-
   return response
 }
 
 export const config = {
-  matcher: ['/login', '/invoices', '/invoices/:path*'],
+  matcher: ['/login'],
 }
